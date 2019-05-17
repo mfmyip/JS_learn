@@ -1,14 +1,14 @@
 "use strict";
 
 const decimal = 10;
-const hex = 16;
+const hexadecimal = 16;
 const binary = 2;
 
 class Num {
 	//base = number, digits = string
 	constructor(base=10, digits='0') {
-		this._base = base;
-		this._digits = digits;
+		this._base = Number(base);
+		this._digits = String(digits);
 	}
 	//get set
 	get base() { return this._base; }
@@ -124,8 +124,8 @@ function toBase(b,num) {
 	}
 }
 
-let num1 = new Num(16,'F0');
-let n = 1;
-console.log(num1);
-console.log(toDecimal(num1));
-console.log(toBase(2,num1));
+document.getElementById("eval").onclick = addAndEval;
+function addAndEval() {
+	let num = new Num(Number(document.getElementById("base-from").value), document.getElementById("digits").value);
+	document.getElementById("output").innerHTML = toBase(Number(document.getElementById("base-to").value),num);
+}
